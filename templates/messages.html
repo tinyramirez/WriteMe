@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block name %} {{request.user.first_name}} {% endblock %}
+
+{% block content %}
+    <div class="container" style="height: 200px;width: 50%;">
+		<div class='container-fluid container-form'>
+			<center>
+				<h1 style="font-family: 'Oswald', sans-serif;">Welcome to WriteMe!</h1>
+				<p>Click the new message button to start a new conversation</p>
+				<a class="btn btn-default" href="/messages/new/">New Message</a>
+			</center>
+		</div>
+	</div>
+{% endblock %}

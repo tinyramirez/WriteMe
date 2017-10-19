@@ -1,0 +1,46 @@
+{% load static %}
+{% load bootstrap_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <title> WriteMe </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+
+  	<div class='container-fluid' style="padding-top:100px;height: 200px;width: 50%;">
+	  	<div class='container-fluid container-main'>
+		  	<div class='container-fluid'>
+		  		<center><h1 style="font-family: 'Oswald', sans-serif;"> WriteMe </h1>		  		
+		  		<a href="/user/signup"><p>No account? Sign up!</p><a></center>
+		  		</br>
+		  		</br>
+			</div>
+			<div class='container-fluid container-form'>
+				<form class='form-horizontal post-form' method="POST" enctype='multipart/form-data'>
+					{% csrf_token %}
+					{{ form|as_bootstrap_horizontal }}	
+					<div class='form-group'>
+			    		<center>
+			    			<button class='btn btn-default' type='submit'>Login</button>
+			    		</center>
+			    	</div>	
+				</form>
+			</div>
+		</div>
+	</div>
+  </body>
+
+</html>
