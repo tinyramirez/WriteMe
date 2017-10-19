@@ -12,12 +12,12 @@
     {% for message in messages %}
     	{% if current != message.receiver %}	
 	        <div class="message" align="right">
-	          <p><b>{{ message.sender }}</b> {{ message.msg_content}}</p>
+	          <p><b>{{ message.sender }}</b> {{ message.message}}</p>
 	          <p><i>{{ message.created_at }}</i></p>
 	        </div>
 	    {% else %}
 	    	<div class="message" align="left">
-	          <p><b>{{ message.sender }}</b> {{ message.msg_content}}</p>
+	          <p><b>{{ message.sender }}</b> {{ message.message}}</p>
 	          <p><i>{{ message.created_at }}</i></p>
 	        </div>
 	    {% endif %}
