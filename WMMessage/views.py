@@ -4,6 +4,7 @@ from WMMessage.models import WMMessage
 from WMUser.models import WMUser
 from WMMessage.forms import MessageForm, MessageListForm
 from itertools import chain
+from operator import attrgetter
 
 # Create your views here.
 class WMMessageList(View):
@@ -33,7 +34,7 @@ class MessageThreadView(View):
 		messages1 = WMMessage.objects.filter(sender_id=pk, receiver_id=request.user.pk)
 		messages2 = WMMessage.objects.filter(receiver_id=pk, sender_id=request.user.pk)
 
-		messages = list(chain(messages1, messages2))
+		messages = sorted(list(chain(messages1, messages2)), key=attrgetter('created_at'))
 		receiver = WMUser.objects.get(pk=pk)
 
 		form = MessageListForm(initial={'sender': request.user, 'receiver': receiver})
@@ -44,7 +45,7 @@ class MessageThreadView(View):
 			messages1 = WMMessage.objects.filter(sender_id=pk, receiver_id=request.user.pk)
 			messages2 = WMMessage.objects.filter(receiver_id=pk, sender_id=request.user.pk)
 
-			messages = list(chain(messages1, messages2))
+			messages = sorted(list(chain(messages1, messages2)), key=attrgetter('created_at'))
 			receiver = WMUser.objects.get(pk=pk)
 
 			form = MessageListForm(request.POST)
